@@ -18,7 +18,7 @@ void rebind(std::function<void()> &f,
 
 ```cpp
 std::function<void()> myFunc = []() { std::cout << "origin myFunc()" << std::endl; };
-rebind(myFunc, [number](const std::function<void()> &handler) {
+rebind(myFunc, [](const std::function<void()> &handler) {
     cout << "Before" << endl;
     handler();
     cout << "After" << endl;
