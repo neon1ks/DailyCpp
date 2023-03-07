@@ -13,3 +13,23 @@ void rebind(std::function<void()> &f,
 ```
 
 Принимает оригинальную функцию и функцию обертки, в которой через `handler` вызывается оригинальная функция.
+
+Пример:
+
+```cpp
+std::function<void()> myFunc = []() { std::cout << "origin myFunc()" << std::endl; };
+rebind(myFunc, [number](const std::function<void()> &handler) {
+    cout << "Before" << endl;
+    handler();
+    cout << "After" << endl;
+});
+myFunc();
+```
+
+Вывод:
+
+```text
+Before
+origin myFunc()
+After
+```
